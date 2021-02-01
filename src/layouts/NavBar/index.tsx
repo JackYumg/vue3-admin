@@ -3,7 +3,19 @@ import { useStore } from 'vuex';
 import { key } from '@/store';
 import screenfull from 'screenfull';
 import HeadImg from '@/assets/head02.gif';
-import { ElMessage } from 'element-plus';
+import {
+  ElMessage,
+  ElPopover,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElBadge,
+  ElTabs,
+  ElTabPane,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElAvatar
+} from 'element-plus';
 
 import style from './index.module.scss';
 
@@ -67,41 +79,39 @@ export default defineComponent({
             <i class={data.menuTouchClass} />
           </li>
           <li class={style['breadcrumb-help']}>
-            <el-breadcrumb separator="/">
+            <ElBreadcrumb separator="/">
               {breadcrumbs.value.map((breadcrumb, index) => (
-                <el-breadcrumb-item key={breadcrumb + index}>
-                  {breadcrumb}
-                </el-breadcrumb-item>
+                <ElBreadcrumbItem key={breadcrumb + index}>{breadcrumb}</ElBreadcrumbItem>
               ))}
-            </el-breadcrumb>
+            </ElBreadcrumb>
           </li>
         </ul>
         <ul class={style['layout-bar-right']}>
-          <el-popover
+          <ElPopover
             placement="top-end"
             trigger="click"
-            v-slots={{
+            vSlots={{
               reference: (
                 <li>
-                  <el-badge value={12} class={style['item']}>
+                  <ElBadge value={12} class={style['item']}>
                     <i class="el-icon-bell" />
-                  </el-badge>
+                  </ElBadge>
                 </li>
               )
             }}
           >
-            <el-tabs value="first">
-              <el-tab-pane label="通知" name="first">
+            <ElTabs value="first">
+              <ElTabPane label="通知" name="first">
                 通知
-              </el-tab-pane>
-              <el-tab-pane label="消息" name="second">
+              </ElTabPane>
+              <ElTabPane label="消息" name="second">
                 消息
-              </el-tab-pane>
-              <el-tab-pane label="邮件" name="third">
+              </ElTabPane>
+              <ElTabPane label="邮件" name="third">
                 邮件
-              </el-tab-pane>
-            </el-tabs>
-          </el-popover>
+              </ElTabPane>
+            </ElTabs>
+          </ElPopover>
           <li>
             <i class="el-icon-table-lamp" />
           </li>
@@ -111,23 +121,23 @@ export default defineComponent({
           <li>
             <i class="el-icon-setting" />
           </li>
-          <el-dropdown
+          <ElDropdown
             v-slots={{
               dropdown: (
-                <el-dropdown-menu>
-                  <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
-                  <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-                  <el-dropdown-item icon="el-icon-switch-button" divided>
+                <ElDropdownMenu>
+                  <ElDropdownItem icon="el-icon-user">个人中心</ElDropdownItem>
+                  <ElDropdownItem icon="el-icon-setting">个人设置</ElDropdownItem>
+                  <ElDropdownItem icon="el-icon-switch-button" divided>
                     退出登录
-                  </el-dropdown-item>
-                </el-dropdown-menu>
+                  </ElDropdownItem>
+                </ElDropdownMenu>
               )
             }}
           >
             <li>
-              <el-avatar size="small" src={HeadImg} />
+              <ElAvatar size="small" src={HeadImg} />
             </li>
-          </el-dropdown>
+          </ElDropdown>
         </ul>
       </div>
     );

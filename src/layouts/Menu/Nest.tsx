@@ -1,4 +1,5 @@
-import { defineComponent, watchEffect } from 'vue';
+import { defineComponent } from 'vue';
+import { ElSubmenu, ElMenuItem } from 'element-plus';
 import { MenuType } from '@/store/modules/menu';
 import Nest from './Nest';
 
@@ -21,9 +22,9 @@ export default defineComponent({
         {props.list.map((menu: MenuType, index: number) => {
           return (
             menu.children.length > 0 && (
-              <el-submenu
+              <ElSubmenu
                 index={menu.path}
-                v-slots={{
+                vSlots={{
                   title: (
                     <>
                       <i class={menu.iconClass} />
@@ -35,16 +36,16 @@ export default defineComponent({
                 {menu.children.map((menuChild, childIndex) => (
                   <>
                     {menuChild.children.length === 0 ? (
-                      <el-menu-item index={menuChild.path}>
+                      <ElMenuItem index={menuChild.path}>
                         <i class={menuChild.iconClass} />
                         {menuChild.menuName}
-                      </el-menu-item>
+                      </ElMenuItem>
                     ) : (
                       <Nest list={menuChild.children} />
                     )}
                   </>
                 ))}
-              </el-submenu>
+              </ElSubmenu>
             )
           );
         })}

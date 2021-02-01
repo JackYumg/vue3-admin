@@ -1,5 +1,5 @@
 import { reactive, defineComponent } from 'vue';
-import { ElMessageBox } from 'element-plus';
+import { ElMessageBox, ElButton, ElCheckbox, ElInput } from 'element-plus';
 import '@/assets/iconfonts/login/iconfont.css';
 import style from './index.module.scss';
 
@@ -28,34 +28,34 @@ export default defineComponent({
             <h1 class={style['form-title']}>Vue3-admin</h1>
             <p class="text-help">这里不知道写点什么，多几个文字比较好看吧</p>
             <div class={style['form-item']}>
-              <el-input
-                prefix-icon="el-icon-s-custom"
+              <ElInput
+                prefixIcon="el-icon-s-custom"
                 type="text"
                 v-model={data.info.username}
                 autocomplete="off"
                 placeholder="用户名：随便"
-              ></el-input>
+              />
             </div>
             <div class={style['form-item']}>
-              <el-input
+              <ElInput
                 prefix-icon="el-icon-lock"
                 type="password"
                 v-model={data.info.password}
                 autocomplete="off"
                 show-password
                 placeholder="密码：随便"
-              ></el-input>
+              />
             </div>
             <div class={style['form-item']} style="margin-bottom: 14px">
-              <el-checkbox v-model={data.remembered}>记住我</el-checkbox>
+              <ElCheckbox v-model={data.remembered}>记住我</ElCheckbox>
               <span class={`${style['forget-p-help']} cper`} onClick={forgetHelp}>
                 忘记密码？
               </span>
             </div>
             <div class={style['form-item']}>
-              <el-button type="primary" onClick={login} style="width: 100%">
+              <ElButton type="primary" onClick={login} style="width: 100%">
                 登录
-              </el-button>
+              </ElButton>
             </div>
             <div class={style['form-item']}>
               <div class={style['oauth-title']}>其他方式登录：</div>

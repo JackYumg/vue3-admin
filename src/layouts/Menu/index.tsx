@@ -1,4 +1,5 @@
-import { defineComponent, computed, watchEffect } from 'vue';
+import { defineComponent, computed } from 'vue';
+import { ElMenu } from 'element-plus';
 import { useStore } from 'vuex';
 import { key } from '@/store';
 import Nest from './Nest';
@@ -13,17 +14,17 @@ export default defineComponent({
     const defaultActive = computed(() => state.setting.activeMenu);
 
     return () => (
-      <el-menu
+      <ElMenu
         style="height: 100%"
         collapse={aside.value}
         router
-        default-active={defaultActive}
+        defaultActive={defaultActive.value}
         background-color="#1d1e23"
         text-color="#eee"
-        collapse-transition={false}
+        collapseTransition={false}
       >
         <Nest list={state.menu.menuList} />
-      </el-menu>
+      </ElMenu>
     );
   },
   components: { Nest }
