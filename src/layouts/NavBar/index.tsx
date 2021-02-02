@@ -100,7 +100,7 @@ export default defineComponent({
               )
             }}
           >
-            <ElTabs value="first">
+            <ElTabs modelValue="second">
               <ElTabPane label="通知" name="first">
                 通知
               </ElTabPane>

@@ -33,7 +33,10 @@ type JsxComponentCustomProps = {
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProps extends JsxComponentCustomProps {
-    // onClick: () => any;
-    [eleName: string]: any;
+    onClick?: () => any;
+    vSlots?: {
+      [eleName: string]: JSX.Element;
+    };
+    // [eleName: string]: any;
   }
 }

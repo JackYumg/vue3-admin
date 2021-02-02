@@ -30,7 +30,7 @@ export default defineComponent({
           </el-row>
         </div>
         {data.msg}
-        <ElButton onClick="handleClick">点击</ElButton>
+        <ElButton onClick={handleClick}>点击</ElButton>
       </>
     );
   }
